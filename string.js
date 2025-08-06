@@ -19,5 +19,3 @@ var dublicateCharacters = function (string)  {
     }
     return characterCount
 }
-
-console.log(dublicateCharacters("geeksforgeeks"))
