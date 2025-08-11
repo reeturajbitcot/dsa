@@ -65,3 +65,43 @@ const searchMatrix = function(matrix, target) {
     }
     return false;
 };
+const matrixRotaion = (matrix) => {
+    const n = matrix.length ;
+    const res = []
+    for (let i = 0 ; i < matrix.length ; i++){
+        res.push([])
+        for (let j = 0 ; j < matrix[i].length ; j++){
+            res[i].push(0)
+        }
+    }
+
+    for (let i = 0 ; i < matrix.length ; i ++){
+        for (let j = 0 ; j < matrix[i].length ; j++){
+            res[i][n - j - 1] = matrix[j][i]
+        }
+    }
+    
+    return res 
+}
+////////////////////////////// OR //////////////////////////////
+const rotateMatrixInPlace = (matrix) => {
+  const n = matrix.length;
+
+  // 1. Transpose
+  for (let i = 0; i < n; i++) {
+    for (let j = i; j < n; j++) {
+      [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+    }
+  }
+
+  // 2. Reverse each row
+  for (let i = 0; i < n; i++) {
+    matrix[i].reverse();
+  }
+
+  return matrix;
+};
+
+const sortedMatrix = (matrix) => {
+
+}

@@ -18,3 +18,17 @@ const minMax = (array) => {
         return [min , max]
     }
 }
+
+const rotateArray = (array, target) => {
+    for (let i = 0 ; i < target ; i++){
+        array.unshift(array.pop())
+    }
+    return array
+}
+
+////////////////////////////// OR///////////////////////////////
+
+const rotateArrayBetter = (array, target) => {
+    let rotatedArray = array.slice(array.length - target).concat(array.slice(0, array.length- target - 1))
+    return rotatedArray
+}
