@@ -28,7 +28,6 @@ const spiralTraversal = (matrix) => {
 }
 
 const searchMatrix = function(matrix, target) {
-    
     // loop over the matrix
     // compare the first element of row with target
     // if it is greater then move to next row first element
@@ -38,4 +37,31 @@ const searchMatrix = function(matrix, target) {
         // if middle is greater than target then move higest to middle -1
         // if middle is smaller than tagreet then move lowest to middle + 1
     // if lowest is greater than highest then return false
+
+    const findElementInArray = (array, target) => {
+        let left = 0;
+        let right = array.length - 1;
+        
+        while (left <= right){
+            let middle = Math.ceil((left + right) / 2);
+            if(target === array[middle]) {
+                return true
+            }else if(target < array[middle]){
+                right = middle - 1
+            }else if(target > array[middle]){
+                left = middle + 1
+            }
+        }
+        return false
+    }
+
+    if (matrix.length === 0 || matrix[0].length === 0) return false;
+    for (let i = 0; i < matrix.length; i++) {
+        if (matrix[i][0] <= target && matrix[i][matrix[i].length - 1] >= target) {
+            if (findElementInArray(matrix[i], target)) {
+                return true;
+            }
+        }
+    }
+    return false;
 };
