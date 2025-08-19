@@ -23,3 +23,15 @@ const bubbleSort = (array) => {
     return array
 }
 
+const insertionSort = (array) => {
+    let n = array.length
+    for (let i = 0; i < n ; i++){
+        for (let j = i; j > 0 ; j--){
+            if(array[j-1] > array[j]){
+                [array[j], array[j-1]] = [array[j-1], array[j]]
+            }
+        }
+    }
+    return array
+}
+

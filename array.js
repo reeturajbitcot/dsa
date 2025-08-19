@@ -59,3 +59,14 @@ var returnToBoundaryCount = function(nums) {
     }
     return count
 };
+
+// kadane's algorithm
+const kadaneAlgo = (array) => { 
+    let maxSum = array[0];
+    let currentSum = 0;
+    for (let i = 0 ; i < array.length ; i++){ 
+        currentSum = Math.max(array[i], currentSum + array[i]); 
+        maxSum = Math.max(currentSum, maxSum) 
+    } 
+    return maxSum 
+}
