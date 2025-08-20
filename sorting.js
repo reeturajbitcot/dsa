@@ -1,8 +1,9 @@
 // Bubble Sort
-// quick sort
-// Selection Sort
 // Insertion Sort
+// Selection Sort
 // Merge Sort
+// quick sort
+
 // Quick Sort
 // Heap Sort
 // Cycle Sort
@@ -35,3 +36,22 @@ const insertionSort = (array) => {
     return array
 }
 
+
+const selectionSort = (array) => {
+    // first loop and the nested loop
+    // taking the first element form the array
+    // in nested loop compare with the rest of the elements
+    // if the element is smaller to the selected element than selected element get that position
+    // at the end of the nested loop swap the elements
+
+    for (let i = 0 ; i < array.length ; i++){
+        let element = i
+        for(let j = i ; j < array.length ; j++){
+            if(array[element] > array[j]){
+                element = j
+            }
+        }
+        [array[element], array[i]]=[array[i], array[element]]
+    }
+    return array
+}

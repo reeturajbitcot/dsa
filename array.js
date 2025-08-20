@@ -70,3 +70,26 @@ const kadaneAlgo = (array) => {
     } 
     return maxSum 
 }
+
+
+// boyer-moore voting algorithm
+// https://www.youtube.com/watch?v=gY-I8uQrCkk
+
+const element = (nums) => {
+    let candidate = nums[0]
+    let count = 0 
+    for (let i = 0 ; i < nums.length;  i++){
+        if(count === 0){
+            candidate = nums[i]
+        }
+        if(candidate == nums[i]){
+            count++
+        }
+        else count--
+    }
+    return candidate
+};
+
+const kthSmallest = (arr, k) => {
+    return  arr.sort((a,b) => a - b)[k - 1]
+}
