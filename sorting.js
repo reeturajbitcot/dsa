@@ -64,6 +64,9 @@ const mergeSort = (array) => {
     let left = array.slice(0, mid)
     let right = array.slice(mid)
 
+    left = mergeSort(left);
+    right = mergeSort(right);
+
     return merge(left, right)
 }
 
