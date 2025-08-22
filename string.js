@@ -19,3 +19,32 @@ var dublicateCharacters = function (string)  {
     }
     return characterCount
 }
+
+
+const checkStringShifting = (str,rotatedStr) => {
+    if(str.length === rotatedStr.length){
+        let firstChar = rotatedStr[0]
+        let positionInStr
+        let updateString 
+        for(let i = 0; i< str.length ; i++){
+            if(firstChar === str[i]) {
+                positionInStr = i
+            }
+        }
+        updateString =  str.split('').slice(positionInStr).concat(str.split('').slice(0,positionInStr)).join('')
+        
+        for(let j = 0 ; j < str.length ; j++){
+            if(updateString[j] !== rotatedStr[j])return false
+        }
+        return true
+    }
+    return false
+}
+
+
+//////////////////////////////// OR ////////////////////////////////
+
+const checkStringShift = (str, rotatedStr) => {
+  if (str.length !== rotatedStr.length) return false;
+  return (str + str).includes(rotatedStr);
+};

@@ -86,3 +86,19 @@ function merge(left, right) {
     
   return result.concat(left.slice(i)).concat(right.slice(j));
 }
+
+const quickSort = (array)  => {
+    if(array.length <= 1) return array
+    let left = []
+    let right = []
+    let base = array[0]
+    for (let i = 1 ; i < array.length ; i++){
+        if (array[i] <= base) {
+            left.push(array[i])
+        }else {
+            right.push(array[i])
+        }
+    }
+
+    return quickSort(left).concat(base, quickSort(right))
+}
