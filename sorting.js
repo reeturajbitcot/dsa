@@ -102,3 +102,35 @@ const quickSort = (array)  => {
 
     return quickSort(left).concat(base, quickSort(right))
 }
+
+const countingSort = (array) => {
+    const counter = {}
+    let max = array[0]
+    let min = array[0]
+    for(let i = 0; i< array.length ; i++){
+        if(max < array[i]){
+            max = array[i]
+        }
+        if( min > array[i]){
+            min = array[i]
+        }
+    } 
+
+    for (let i = min; i <= max ; i++){
+        counter[i] = 0
+    }
+
+    for( let i = 0 ; i < array.length ; i++){
+        counter[array[i]] = counter[array[i]] + 1
+    }
+
+    let sortedIndex = 0;
+    for (let i = min; i <= max; i++) {
+        while (counter[i] > 0) {
+            array[sortedIndex] = i;
+            sortedIndex++;
+            counter[i]--;
+        }
+    }
+    return array;
+}
