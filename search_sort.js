@@ -14,7 +14,7 @@ const firstLastOccurance = (arr, no) => {
     return index
 }
 
-const findingIndexing = () => {
+const findingIndexing = (arr) => {
     let index = [];
     for (let i = 0 ; i < arr.length ; i++){
         if(i + 1 === arr[i]) {
@@ -22,4 +22,32 @@ const findingIndexing = () => {
         }
     }
     return index
+}
+
+
+const countSquares = (n) => {
+    let count = 0;
+    for (let i = 1 ; i < Math.round(n/2) ; i++){
+        if(i**2 < n){count++}
+    }
+    return count
+}
+
+const countSquaresBetter = (n) => {
+    return Math.floor(Math.sqrt(n - 1))
+}
+
+// Finding minimum in rotated Sorted Array
+const minimumRotatedSortedArray = (arr) => {
+    let left = 0
+    let right = arr.length - 1
+    while(left < right) {
+        let mid = left + Math.floor((right - left)/ 2)
+        if(arr[mid] > arr[right]){
+            left = mid + 1
+        }else {
+            right = mid
+        }
+    }
+    return arr[left]
 }
