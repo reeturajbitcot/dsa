@@ -72,7 +72,7 @@ const serarchInRotatedArray = (nums, target) => {
     }else if(target >= nums[0] && target <= nums[minimum_element - 1]){
         left = 0 ;
         rigth = minimum_element - 1
-    }else {
+    }else { 
         left = minimum_element
         right = nums.length - 1
     }
@@ -88,4 +88,15 @@ const serarchInRotatedArray = (nums, target) => {
         }
     }
    return -1
+}
+
+const minNMax = (arr) => {
+    let min = arr[0];
+    let max = arr[0];
+
+    for (let i = 1 ; i< arr.length; i++){
+        if(arr[i] > max) {max = arr[i]}
+        if(arr[i] < min) {min = arr[i]}
+    }
+    return {min, max}
 }
