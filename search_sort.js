@@ -100,3 +100,25 @@ const minNMax = (arr) => {
     }
     return {min, max}
 }
+
+const findTwoElement = (arr) => {
+    const n = arr.length;
+    let arrSum = 0;
+    let sqArrSum = 0;
+
+    const realSum = (n * (n + 1)) / 2;
+    const sqRealSum = (n * (n + 1) * (2 * n + 1)) / 6;
+
+    for (let i = 0; i < n; i++) {
+        arrSum += arr[i];
+        sqArrSum += arr[i] * arr[i];
+    }
+
+    const value1 = realSum - arrSum;             // missing - repeating
+    const value2 = (sqRealSum - sqArrSum) / value1; // missing + repeating
+
+    const missing = (value1 + value2) / 2;
+    const repeating = missing - value1;
+
+    return [repeating, missing];
+}
