@@ -93,3 +93,29 @@ const element = (nums) => {
 const kthSmallest = (arr, k) => {
     return  arr.sort((a,b) => a - b)[k - 1]
 }
+
+
+// interver question
+const peakInInterval = (array) => {
+    const output = [];
+    let peak = array[0];
+    let index = 0;
+    for (let i = 1; i <= array.length; i++){
+        if(array[i] * array[i-1] > 0){
+             if(peak < 0 && peak > array[i]){
+                 peak = array[i];
+                 index = i
+             }
+            
+             if(peak > 0 && peak < array[i]){
+                 peak = array[i];
+                 index = i
+             }
+        } else {
+            output.push([peak, index])
+            peak = array[i]
+            index = i
+        }
+    }
+    return output
+}
