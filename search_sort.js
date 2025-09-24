@@ -122,3 +122,35 @@ const findTwoElement = (arr) => {
 
     return [repeating, missing];
 }
+
+
+// https://www.geeksforgeeks.org/problems/majority-element-1587115620/1
+
+function majorityElement(arr) {
+  const n = arr.length;
+  if (n === 0) return -1;
+
+  // Step 1: Find candidate using Boyer–Moore
+  let candidate = arr[0];
+  let count = 1;
+
+  for (let i = 1; i < n; i++) {
+    if (arr[i] === candidate) {
+      count++;
+    } else {
+      count--;
+      if (count === 0) {
+        candidate = arr[i];
+        count = 1;
+      }
+    }
+  }
+
+  // Step 2: Verify candidate
+  count = 0;
+  for (let num of arr) {
+    if (num === candidate) count++;
+  }
+
+  return count > Math.floor(n / 2) ? candidate : -1;
+}
