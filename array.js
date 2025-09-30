@@ -119,3 +119,42 @@ const peakInInterval = (array) => {
     }
     return output
 }
+
+const sort012 =(arr) => {
+        // code here
+        // Three counter for low mid and high for 0,1 and 2 respectively.
+        //  let low and mid to 0 and high to be arr.length-1
+        //  while loop  mid < high
+        //  if (0) increment low and mid and swap mid with low + 1
+        // if (1) increment mid 
+        //  if(2) decrement high and swap mid with high
+        let low = 0;
+        let mid = 0;
+        let high = arr.length -1;
+        while (mid <= high){
+            if(arr[mid] === 0){
+                 [arr[mid], arr[low]] = [arr[low], arr[mid]]
+                low++;
+                mid++;
+            }else if(arr[mid] === 1){
+                mid++
+            }else {
+                [arr[mid], arr[high]] = [arr[high], arr[mid]]
+                high--;
+            }
+        }
+    return arr
+}
+
+// https://www.geeksforgeeks.org/problems/union-of-two-arrays3538/1
+
+const findUnion = (arr1, arr2) => {
+    const counter = {}
+    for (let i = 0 ; i < arr1.length; i++){
+        counter[arr1[i]]= counter[arr1[i]] ? counter[arr1[i]] + 1 : 1
+    }
+    for (let j = 0 ; j < arr2.length; j++){
+        counter[arr2[j]]= counter[arr2[j]] ? counter[arr2[j]] + 1 : 1
+    }
+    return Object.keys(counter).sort((a,b) => a - b)
+}
