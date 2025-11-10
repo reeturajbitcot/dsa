@@ -158,3 +158,9 @@ const findUnion = (arr1, arr2) => {
     }
     return Object.keys(counter).sort((a,b) => a - b)
 }
+
+const rotateSingleElement = (arr) => {
+    let lastElement = arr.pop();
+    arr.unshift(lastElement)
+}
+
