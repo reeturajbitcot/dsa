@@ -48,3 +48,19 @@ const checkStringShift = (str, rotatedStr) => {
   if (str.length !== rotatedStr.length) return false;
   return (str + str).includes(rotatedStr);
 };
+
+// leetcode 125
+var isPalindrome = function(s) {
+    const w = s.replace(/[^a-zA-Z0-9]/g, "")
+    let left= 0;
+    let right= w.length -1
+    while(left < right){  
+        if(w[left].toLowerCase() !== w[right].toLowerCase()){
+            return false
+        }else{
+            left++
+            right--
+        }
+    }
+    return true
+};

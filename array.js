@@ -164,3 +164,28 @@ const rotateSingleElement = (arr) => {
     arr.unshift(lastElement)
 }
 
+// leetcode 22 merge two sorted array
+function mergeSortedArray (list1,list2) {
+      let i = 0;
+    let j = 0;
+    const returnArray = []
+    while (i < list1.length || j< list2.length){
+        if(list1[i] < list2[j]){
+            returnArray.push(list1[i])
+            i++
+        }else if(list1[i] > list2[j]){
+            returnArray.push(list2[j])
+            j++
+        }else {
+            if(i < arr1.length){
+                returnArray.push(list1[i])
+                i++
+            }else if(j < list2.length){
+                returnArray.push(list2[j])
+                j++
+            }
+        }
+    }
+    console.log(returnArray) 
+}
+
