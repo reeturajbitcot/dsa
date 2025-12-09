@@ -64,3 +64,22 @@ var isPalindrome = function(s) {
     }
     return true
 };
+
+// leetcode 242
+var isAnagram = function(s, t) {
+       if(s.length !== t.length) return false;
+    const sObject = {}
+    const tObject = {}
+    for(let i= 0 ; i < s.length ; i++){
+     sObject[s[i]] = sObject[s[i]] ? sObject[s[i]] + 1 : 1 
+     tObject[t[i]] = tObject[t[i]] ? tObject[t[i]] + 1 : 1
+    }
+
+    for (let key in sObject) {
+    if (!tObject.hasOwnProperty(key) || sObject[key] !== tObject[key]) {
+      return false;
+    }
+  }
+
+    return true
+};
