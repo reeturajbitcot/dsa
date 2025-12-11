@@ -189,3 +189,39 @@ function mergeSortedArray (list1,list2) {
     console.log(returnArray) 
 }
 
+// max distance [1,1,2,2,2,1]
+
+const maxDistance = (arr) => {
+    const store = {};
+    let max = 0;
+    for(let i= 0 ; i< arr.length ; i++){
+        if(!store.hasOwnProperty(arr[i])){
+            store[arr[i]] = i
+        }else {
+            max = Math.max(max, i - store[arr[i]])
+        }
+    }
+    console.log(max - 1)
+    return max - 1 
+} 
+
+
+function checkCloseDuplicates(arr, k) {
+  const indexMap = new Map(); 
+
+  for (let i = 0; i < arr.length; i++) {
+    const currentValue = arr[i];
+
+    if (indexMap.has(currentValue)) {
+      const j = indexMap.get(currentValue);
+      if (Math.abs(i - j) <= k) {
+        return 'Yes';
+      }
+    }
+
+    indexMap.set(currentValue, i);
+    console.log(indexMap)
+  }
+
+  return 'No';
+}
