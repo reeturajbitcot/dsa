@@ -68,8 +68,34 @@ const mostFreqEle = (a) => {
     return max
 }
 
-let a = [1, 2, 3, 2, 1];
+// Check If Array Pair Sums Divisible by k
 
-
-
-mostFreqEle(a)
+const canPairs = (nums, k) => {
+    const numsMap = new Map()
+    for(let i = 0 ; i < nums.length ; i++){
+        const val = nums[i] % k
+        numsMap.set(val, numsMap.get(val) ? numsMap.get(val) + 1 : 1)
+    }
+    for(const ele of numsMap.keys()){
+        if(ele === 0){
+            if(numsMap.get(ele) % 2 !== 0) {
+                return false
+            }
+        }else if( k % 2 === 0 && ele === k / 2)  {
+            if(numsMap.get(ele) % 2 !== 0) {
+                return false
+            }
+        }else {
+            let complimentary = k - ele 
+            if(numsMap.has(complimentary)){
+                if(numsMap.get(ele) !== numsMap.get(complimentary)){
+                   return false
+                }
+            } else {
+                return false
+            }
+        }
+    }
+    return true
+}
+canPairs([20,25,10,3,15,27,4,5], 10)

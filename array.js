@@ -225,3 +225,25 @@ function checkCloseDuplicates(arr, k) {
 
   return 'No';
 }
+
+// Check If Array Pair Sums Divisible by k
+
+const canPairs = (nums, k) => {
+    const n = nums.length
+    if(n % 2 !== 0) return false;
+
+    let count = 0
+    const ind = new Array(n).fill(-1);
+
+    for(let i = 0; i < n ; i++){
+        for(let j = i+1; j< n ; j++){
+            if((nums[i] + nums[j]) % k === 0 && ind[i] === -1 && ind[j] === -1){
+                count++
+                ind[i] = 1;
+                ind[j] = 1
+            }
+        }
+    }
+    return count === n /2
+}
+
