@@ -98,4 +98,59 @@ const canPairs = (nums, k) => {
     }
     return true
 }
-canPairs([20,25,10,3,15,27,4,5], 10)
+
+const sumOfPairs = (arr, k) => {
+    const hashMap = new Map()
+    let counter = 0
+    for(let i = 0 ; i < arr.length ; i++){
+
+        if(hashMap.has(k - arr[i])){
+            counter += hashMap.get(k -arr[i])
+        }
+
+        hashMap.set(arr[i], (hashMap.get(arr[i]) || 0 ) + 1)
+    }
+    return counter
+}
+
+sumOfPairs([1,5,7,-1,5], 6)
+
+// 3 Sum - Count all triplets with given sum
+
+// loop over the array 
+// fix first element of the triple pair with arr[index]
+// run another function 
+// argument will be arr and  argu = (no - arr[index])
+// for above function we have to find sum of pair that's equal to argu
+    // create map 
+    // if no is 0 then value should be even
+    // if no is value / 2 then value should be even
+    // complementary no should present and value of complementary no should be equal to the value of no
+    // have counter and return the no of pair
+//  keep couter for triplet
+// return counter
+const getTriplePairsCount = (arr, no) => {
+
+    const sumPair = (idx ,val) => {
+        let counter = 0;
+        const uniqueCounter = new Map()
+        for(let i = idx ; i < arr.length ; i++){
+            if(uniqueCounter.has(val - arr[i])){
+                counter+= uniqueCounter.get(val - arr[i])
+            }
+            uniqueCounter.set(arr[i], (uniqueCounter.get(arr[i]) || 0) + 1)
+        }
+        return counter
+    }
+
+    let finalCounter  = 0;
+    for(let i = 0 ; i < arr.length - 2 ; i++){
+        const secArg = no - arr[i]
+      const counter = sumPair(i+1, secArg)
+      finalCounter += counter
+    }
+
+    console.log(finalCounter)
+    return finalCounter
+}
+getTriplePairsCount([0, -1, 2, -3, 1], -2)
