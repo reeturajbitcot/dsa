@@ -153,4 +153,50 @@ const getTriplePairsCount = (arr, no) => {
     console.log(finalCounter)
     return finalCounter
 }
-getTriplePairsCount([0, -1, 2, -3, 1], -2)
+
+const findItinerary =(arr) => {
+    // create hashmap using from (dep) -> to(des) 
+    // again create hashmap (reverseHashmap) using to (des) -> from (dep)
+    // loop over and check which key is not on reverseHashmap
+    // that is the starting point of the topology sorting
+    // create an arr for return
+    // loop over until we have start element
+        // start -> get data from hashmap and add that data to retuArr 
+        // update the start to the end value of prev
+        // if no previous then update the start to null or undefined
+    // return arr
+
+     const hashMap = new Map()
+     for (const ele of arr){
+        hashMap.set(ele[0], ele[1])
+     }
+     
+     const reverseHashmap = new Map() 
+     for(const ele of arr){
+        reverseHashmap.set(ele[1], ele[0])
+     }
+
+     let start 
+     for(const ele of arr){
+        if(!reverseHashmap.has(ele[0])){
+            start = ele[0]
+            break
+        }
+     }
+
+     const retuArr = []
+     while (start){
+        const destination = hashMap.get(start)
+        if(destination){
+            retuArr.push([start, destination])
+            start = destination
+        }else {
+            start = null
+        }
+     }
+     console.log(retuArr)
+     return retuArr
+}
+
+findItinerary([["Chennai", "Bangalore"], ["Bombay", "Delhi"], 
+           ["Goa", "Chennai"], ["Delhi", "Goa"]])
