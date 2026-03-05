@@ -49,12 +49,36 @@ class Stack {
   }
 }
 
-const ourStack = new Stack();
-ourStack.push(5);
-ourStack.push(4);
-ourStack.push(3);
-ourStack.push(2);
-ourStack.push(1);
-ourStack.pop();
-ourStack.pop();
-ourStack.printStack();
+function celebrity(mat) {
+  let n = mat.length;
+
+  // indegree and outdegree array
+  let indegree = new Array(n).fill(0);
+  let outdegree = new Array(n).fill(0);
+
+  // query for all edges
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      let x = mat[i][j];
+
+      // set the degrees
+      outdegree[i] += x;
+      indegree[j] += x;
+    }
+  }
+
+  // find a person with indegree n-1
+  // and out degree 0
+  for (let i = 0; i < n; i++)
+    if (indegree[i] === n && outdegree[i] === 1) return i;
+
+  return -1;
+}
+
+// Driver Code
+let mat = [
+  [1, 1, 0],
+  [0, 1, 0],
+  [0, 1, 1],
+];
+console.log(celebrity(mat));
