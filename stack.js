@@ -75,10 +75,59 @@ function celebrity(mat) {
   return -1;
 }
 
-// Driver Code
-let mat = [
-  [1, 1, 0],
-  [0, 1, 0],
-  [0, 1, 1],
-];
-console.log(celebrity(mat));
+// leetcode 155
+
+var MinStack = function () {
+  this.stack = [];
+  this.min = [];
+};
+
+/**
+ * @param {number} val
+ * @return {void}
+ */
+MinStack.prototype.push = function (val) {
+  let a = this.min[this.min.length - 1];
+  this.stack.push(val);
+  a < val ? this.min.push(a) : this.min.push(val);
+};
+
+/**
+ * @return {void}
+ */
+MinStack.prototype.pop = function () {
+  this.stack.pop();
+  this.min.pop();
+};
+
+/**
+ * @return {number}
+ */
+MinStack.prototype.top = function () {
+  return this.stack[this.stack.length - 1];
+};
+
+/**
+ * @return {number}
+ */
+MinStack.prototype.getMin = function () {
+  return this.min[this.min.length - 1];
+};
+
+// leetcode 739 monotonic stack
+var dailyTemperatures = function (temperatures) {
+  let stack = [];
+  let ans = new Array(temperatures.length).fill(0);
+
+  for (let i = 0; i < temperatures.length; i++) {
+    while (
+      stack.length &&
+      temperatures[stack[stack.length - 1]] < temperatures[i]
+    ) {
+      let n = stack.pop();
+      ans[n] = i - n;
+    }
+    stack.push(i);
+  }
+  return ans;
+};
